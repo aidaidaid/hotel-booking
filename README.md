@@ -13,7 +13,7 @@ A modern React-based hotel booking application that allows users to configure tr
 1. **Clone the repository**
    ```bash
    git clone <repository-url>
-   cd booking
+   cd hotel-booking
    ```
 
 2. **Install dependencies**
