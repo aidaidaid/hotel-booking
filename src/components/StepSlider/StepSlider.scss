@@ -1,0 +1,23 @@
+.step-slider {
+  border-radius: 1rem;
+  overflow: hidden;
+  position: relative;
+}
+
+.step-slide {
+  width: 100%;
+  animation: fadeIn 220ms ease;
+
+  > * {
+    width: 100%;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

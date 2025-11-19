@@ -1,0 +1,40 @@
+.board-fieldset {
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  padding: 1rem;
+}
+
+.board-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.board-card {
+  border: 1px solid var(--border);
+  border-radius: 0.9rem;
+  padding: 0.9rem;
+  display: flex;
+  gap: 0.8rem;
+  cursor: pointer;
+  transition: border-color 120ms ease, transform 120ms ease, box-shadow 120ms ease;
+
+  &:hover {
+    border-color: var(--accent);
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+
+  input {
+    margin-top: 0.2rem;
+  }
+
+  p {
+    margin: 0.25rem 0 0;
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+}

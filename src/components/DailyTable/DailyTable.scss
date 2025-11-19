@@ -1,0 +1,169 @@
+.table-wrapper {
+  overflow-x: auto;
+  overflow-y: visible;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  position: relative;
+  z-index: 0;
+
+  &::-webkit-scrollbar {
+    height: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: var(--surface);
+    border-radius: 4px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 4px;
+
+    &:hover {
+      background: var(--muted-strong);
+    }
+  }
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+  position: relative;
+}
+
+th, td {
+  text-align: left;
+  padding: 0.75rem;
+  border-bottom: 1px solid var(--border);
+  position: relative;
+  overflow: visible;
+}
+
+td.day {
+  min-width: 80px;
+}
+
+td.hotel {
+  width: 300px;
+  .custom-select {
+    width: 300px;
+  }
+}
+
+td.meal {
+  width: 250px;
+  .custom-select {
+    width: 250px;
+  }
+}
+
+th {
+  color: var(--muted-strong);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+td select {
+  width: 100%;
+  border-radius: 0.6rem;
+  border: 1px solid var(--border);
+  padding: 0.55rem 0.8rem;
+  transition: border-color 180ms ease, box-shadow 180ms ease;
+
+  &:focus {
+    border-color: var(--accent);
+    box-shadow: 0 12px 20px rgba(15, 118, 255, 0.15);
+    outline: none;
+  }
+}
+
+.day-label {
+  font-weight: 600;
+  margin: 0;
+}
+
+.day-subtitle {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.rule-hint {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+@media (max-width: 640px) {
+  .table-wrapper {
+    margin: 0 -1.2rem;
+    padding: 0 1.2rem;
+  }
+
+  table {
+    font-size: 0.85rem;
+    min-width: 600px;
+  }
+
+  th, td {
+    padding: 0.6rem 0.4rem;
+    white-space: nowrap;
+  }
+
+  th {
+    font-size: 0.75rem;
+  }
+
+  td select {
+    padding: 0.5rem 0.6rem;
+    font-size: 0.85rem;
+  }
+
+  .day-label {
+    font-size: 0.9rem;
+  }
+
+  .day-subtitle {
+    font-size: 0.75rem;
+  }
+
+  .rule-hint {
+    font-size: 0.85rem;
+    margin-top: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .table-wrapper {
+    margin: 0 -1rem;
+    padding: 0 1rem;
+  }
+
+  table {
+    min-width: 550px;
+    font-size: 0.8rem;
+  }
+
+  th, td {
+    padding: 0.5rem 0.3rem;
+  }
+
+  th {
+    font-size: 0.7rem;
+  }
+
+  td select {
+    padding: 0.45rem 0.5rem;
+    font-size: 0.8rem;
+  }
+
+  .day-label {
+    font-size: 0.85rem;
+  }
+
+  .day-subtitle {
+    font-size: 0.7rem;
+  }
+}

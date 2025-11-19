@@ -1,0 +1,245 @@
+.custom-select {
+  position: relative;
+  width: 100%;
+  font-family: inherit;
+  z-index: 1;
+
+  &.open {
+    z-index: 99999;
+  }
+}
+
+.select-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.7rem 0.9rem;
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 0.65rem;
+  cursor: pointer;
+  transition: all 180ms ease;
+  min-height: 44px;
+
+  &:hover:not(.disabled) {
+    border-color: var(--accent);
+    box-shadow: 0 4px 12px rgba(15, 118, 255, 0.1);
+  }
+
+  &:focus-within {
+    border-color: var(--accent);
+    box-shadow: 0 12px 20px rgba(15, 118, 255, 0.15);
+    outline: none;
+  }
+}
+
+.select-value {
+  color: var(--muted-strong);
+  font-size: 1rem;
+  font-weight: 500;
+  flex: 1;
+  text-align: left;
+}
+
+.select-placeholder {
+  color: var(--muted);
+  font-size: 1rem;
+  flex: 1;
+  text-align: left;
+}
+
+.select-arrow {
+  color: var(--muted);
+  transition: transform 200ms ease;
+  flex-shrink: 0;
+
+  &.open {
+    transform: rotate(180deg);
+  }
+}
+
+.custom-select.disabled {
+  .select-trigger {
+    background: #f8f9fa;
+    cursor: default;
+    opacity: 0.6;
+  }
+}
+
+.select-dropdown {
+  position: fixed;
+  z-index: 99999;
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.12), 0 2px 8px rgba(15, 23, 42, 0.08);
+  overflow: hidden;
+  animation: slideDown 200ms ease;
+  max-height: 280px;
+  overflow-y: auto;
+  will-change: transform, opacity;
+  transform-origin: top center;
+  isolation: isolate;
+
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 3px;
+
+    &:hover {
+      background: var(--muted);
+    }
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.select-options {
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.select-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  border-radius: 0.6rem;
+  cursor: pointer;
+  transition: all 150ms ease;
+  position: relative;
+  background: white;
+  color: var(--muted-strong);
+  font-size: 0.95rem;
+  font-weight: 500;
+
+  &:hover:not(.disabled):not(.selected) {
+    background: rgba(15, 118, 255, 0.08);
+    color: var(--accent);
+    transform: translateX(2px);
+  }
+
+  &.selected {
+    background: linear-gradient(135deg, rgba(15, 118, 255, 0.12) 0%, rgba(15, 118, 255, 0.08) 100%);
+    color: var(--accent);
+    font-weight: 600;
+    border: 1px solid rgba(15, 118, 255, 0.2);
+
+    .check-icon {
+      color: var(--accent);
+      animation: checkIn 200ms ease;
+    }
+  }
+
+  &.disabled {
+    opacity: 0.5;
+    cursor: default;
+    background: #f8f9fa;
+  }
+}
+
+.option-label {
+  flex: 1;
+  text-align: left;
+}
+
+.check-icon {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  color: var(--accent);
+}
+
+@keyframes checkIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+td .custom-select {
+  .select-trigger {
+    height: 40px;
+    padding: 0.55rem 0.8rem;
+    border-radius: 0.6rem;
+  }
+
+  .select-value,
+  .select-placeholder {
+    font-size: 0.95rem;
+  }
+
+  .select-option {
+    padding: 0.65rem 0.9rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .select-trigger {
+    padding: 0.6rem 0.8rem;
+    min-height: 40px;
+  }
+
+  .select-value,
+  .select-placeholder {
+    font-size: 0.95rem;
+  }
+
+  td .custom-select {
+    .select-trigger {
+      padding: 0.5rem 0.6rem;
+      min-height: 36px;
+    }
+
+    .select-value,
+    .select-placeholder {
+      font-size: 0.85rem;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  td .custom-select {
+    .select-trigger {
+      padding: 0.45rem 0.5rem;
+      min-height: 34px;
+    }
+
+    .select-value,
+    .select-placeholder {
+      font-size: 0.8rem;
+    }
+
+    .select-option {
+      padding: 0.6rem 0.8rem;
+      font-size: 0.85rem;
+    }
+  }
+}

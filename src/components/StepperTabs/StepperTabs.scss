@@ -1,0 +1,68 @@
+.stepper-tabs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 0.75rem;
+}
+
+.stepper-tab {
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  padding: 0.75rem 0.9rem;
+  display: flex;
+  gap: 0.9rem;
+  align-items: center;
+  background: white;
+  cursor: pointer;
+  transition: border-color 180ms ease, box-shadow 180ms ease, color 180ms ease, transform 120ms ease;
+
+  strong {
+    font-size: 1rem;
+    display: block;
+  }
+
+  p {
+    margin: 0.1rem 0 0;
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+
+  &:active:not(.locked) {
+    transform: scale(0.97);
+  }
+
+  &.active {
+    border-color: var(--accent);
+    box-shadow: 0 12px 20px rgba(15, 118, 255, 0.15);
+  }
+
+  &.complete .step-circle {
+    background: var(--accent);
+    color: white;
+  }
+
+  &.locked {
+    opacity: 0.55;
+    cursor: default;
+  }
+
+  &:disabled {
+    cursor: default;
+  }
+}
+
+.step-circle {
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+}
+
+.step-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}

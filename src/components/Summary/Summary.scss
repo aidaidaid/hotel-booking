@@ -1,0 +1,100 @@
+@use '../BookingForm/BookingForm.scss';
+
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+}
+
+.summary-card {
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  padding: 1rem;
+  background: white;
+
+  h3 {
+    margin-top: 0;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  li {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.95rem;
+    color: var(--muted-strong);
+  }
+
+  strong {
+    font-weight: 600;
+    color: inherit;
+  }
+}
+
+.daily-list {
+  li {
+    flex-direction: column;
+    gap: 0.3rem;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 0.7rem;
+
+    &:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+  }
+
+  div {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.totals-card {
+  border: 2px solid var(--accent);
+  border-radius: 1rem;
+  padding: 1rem;
+  background: rgba(15, 118, 255, 0.04);
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  li {
+    display: grid;
+    grid-template-columns: 80px 1fr auto;
+    gap: 0.75rem;
+    align-items: center;
+  }
+}
+
+.muted {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+@media (max-width: 640px) {
+  .totals-card li {
+    grid-template-columns: 60px 1fr;
+    grid-template-areas: 'label price' 'desc desc';
+  }
+}
