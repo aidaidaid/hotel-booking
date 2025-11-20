@@ -10,9 +10,8 @@ A modern React-based hotel booking application that allows users to configure tr
 
 ### Installation
 
-1. **Clone the repository**
+1. **Clone the repository and navigate to the project directory**
    ```bash
-   git clone <repository-url>
    cd hotel-booking
    ```
 
@@ -121,14 +120,6 @@ This logic is centralized in the reducer to ensure consistency across the applic
 - REST API for data persistence
 - Multi-language support (i18n)
 - Increase test coverage
-
-## 📝 Scripts
-
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm run preview` - Preview production build
-- `npm run test` - Run tests
-- `npm run lint` - Run ESLint
 
 ## 📄 License
 
