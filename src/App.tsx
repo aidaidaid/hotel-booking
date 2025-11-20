@@ -4,9 +4,11 @@ import { StepperTabs } from './components/StepperTabs/StepperTabs'
 import { StepperControls } from './components/StepperControls/StepperControls'
 import { Header } from './components/Header/Header'
 import { StepSlider } from './components/StepSlider/StepSlider'
+import { ToastContainer } from './components/Toast/ToastContainer'
 import { exportBookingToPdf } from './utils/export/exportPdf'
 import { useBookingData } from './hooks/useBookingData'
 import { useSteps } from './hooks/useSteps'
+import { useToast } from './hooks/useToast'
 import { createStepsConfig } from './steps/createStepsConfig'
 
 const App = () => {
@@ -31,14 +33,22 @@ const App = () => {
   )
 
   const { currentStep, goToStep, nextDisabled } = useSteps(steps, configComplete)
+  const { toasts, showToast, removeToast } = useToast()
 
   const handleExport = useCallback(() => {
     exportBookingToPdf(form, days, selections)
   }, [form, days, selections])
 
   const handleSave = useCallback(() => {
-    saveData(form, selections)
-  }, [form, selections, saveData])
+    saveData(form, selections, {
+      onSuccess: () => {
+        showToast('Data saved successfully!', 'success')
+      },
+      onError: () => {
+        showToast('Failed to save data', 'error')
+      },
+    })
+  }, [saveData, showToast])
 
   return (
     <main className="app-shell">
@@ -58,6 +68,7 @@ const App = () => {
           nextDisabled={nextDisabled}
         />
       </section>
+      <ToastContainer toasts={toasts} onRemove={removeToast} />
     </main>
   )
 }

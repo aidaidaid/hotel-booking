@@ -1,0 +1,46 @@
+.toast-container {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  z-index: 10000;
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 12px;
+  padding: 24px;
+  pointer-events: none;
+  align-items: flex-end;
+  max-height: calc(100vh - 48px);
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  > * {
+    pointer-events: auto;
+  }
+
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: rgba(15, 23, 42, 0.2);
+    border-radius: 2px;
+
+    &:hover {
+      background: rgba(15, 23, 42, 0.3);
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .toast-container {
+    padding: 16px;
+    gap: 10px;
+    left: 0;
+    align-items: stretch;
+    max-height: calc(100vh - 32px);
+  }
+}

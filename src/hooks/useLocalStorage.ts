@@ -3,6 +3,11 @@ import { FormState, SelectionsState } from '../App.types'
 
 const STORAGE_KEY = 'hotel-booking-data'
 
+export interface UseLocalStorageCallbacks {
+  onSuccess?: () => void
+  onError?: (error: Error) => void
+}
+
 export const useLocalStorage = () => {
   const [hasSavedData, setHasSavedData] = useState(false)
 
@@ -11,13 +16,20 @@ export const useLocalStorage = () => {
     setHasSavedData(!!saved)
   }, [])
 
-  const saveData = (form: FormState, selections: SelectionsState) => {
-    const payload = {
-      form,
-      selections,
+  const saveData = (form: FormState, selections: SelectionsState, callbacks?: UseLocalStorageCallbacks) => {
+    try {
+      const payload = {
+        form,
+        selections,
+      }
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(payload))
+      setHasSavedData(true)
+      callbacks?.onSuccess?.()
+    } catch (error) {
+      const err = error instanceof Error ? error : new Error('Failed to save data')
+      console.error('Failed to save data to localStorage:', err)
+      callbacks?.onError?.(err)
     }
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(payload))
-    setHasSavedData(true)
   }
 
   const loadDataFromStorage = (): { form: FormState; selections: SelectionsState } | null => {
