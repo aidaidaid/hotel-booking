@@ -22,6 +22,7 @@ export const StepperTabs = ({ steps, currentStep, onStepClick }: StepperTabsProp
           <span className="step-circle">{index + 1}</span>
           <div className="step-text">
             <strong>{step.title}</strong>
+            <p>{step.subtitle}</p>
           </div>
         </button>
       ))}

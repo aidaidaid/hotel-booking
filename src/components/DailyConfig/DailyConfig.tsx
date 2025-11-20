@@ -5,9 +5,6 @@ import { DailyConfigProps } from './DailyConfig.types'
 export const DailyConfig = ({ days, destination, boardType, selections, onUpdate }: DailyConfigProps) => {
   return (
     <section className="panel">
-      <header className="panel-header">
-        <h2>Hotels and optional meals</h2>
-      </header>
       <DailyTable
         days={days}
         destination={destination}

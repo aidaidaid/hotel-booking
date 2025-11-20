@@ -16,8 +16,6 @@ const currencyFormatter = new Intl.NumberFormat(undefined, {
 
 export const Summary = ({ form, calculationResult }: SummaryProps) => {
   const { priceRows, grandTotal } = calculationResult
-
-  // Memoize formatCurrency to avoid recreating on every render
   const formatCurrency = useMemo(
     () => (value: number) => currencyFormatter.format(value),
     [],
@@ -25,10 +23,6 @@ export const Summary = ({ form, calculationResult }: SummaryProps) => {
 
   return (
     <section className="panel">
-      <header className="panel-header">
-        <h2>Review selections and pricing</h2>
-      </header>
-
       <div className="summary-grid">
         <div className="summary-card">
           <h3>Configuration</h3>

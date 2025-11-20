@@ -18,10 +18,6 @@ export const BookingForm = ({ form, onChange }: BookingFormProps) => {
 
   return (
     <section className="panel">
-      <header className="panel-header">
-        <h2>Traveler details & board type</h2>
-      </header>
-
       <div className="form-grid">
         <label className="field">
           <span>Citizenship</span>
